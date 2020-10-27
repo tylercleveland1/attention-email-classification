@@ -4,7 +4,7 @@ from sklearn.model_selection import train_test_split
 import re
 
 class SpamDataset:
-    puncutation_stops = ['!', '@', '#']
+    
     #Returns (X_train, y_train, X_test, y_test), for SpamDataset
     @staticmethod
     def get_train_test_data():
