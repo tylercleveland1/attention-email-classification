@@ -3,6 +3,7 @@
 # tensorflow             2.3.0
 
 #https://keras.io/examples/nlp/text_classification_with_transformer/
+#https://androidkt.com/text-classification-using-attention-mechanism-in-keras/
 
 from spam_dataset import SpamDataset
 
