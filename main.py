@@ -4,6 +4,7 @@
 
 #https://keras.io/examples/nlp/text_classification_with_transformer/
 #https://androidkt.com/text-classification-using-attention-mechanism-in-keras/
+#https://www.tensorflow.org/api_docs/python/tf/keras/layers/Attention
 
 from spam_dataset import SpamDataset
 
