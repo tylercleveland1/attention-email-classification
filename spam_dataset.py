@@ -7,13 +7,13 @@ class SpamDataset:
     
     #Returns (X_train, y_train, X_test, y_test), for SpamDataset
     @staticmethod
-    def get_train_test_data():
+    def get_data():
         #load emails csv
         ds_emails = pd.read_csv('./data/emails.csv')
         texts = ds_emails['text'].apply(SpamDataset.__clean_text)
         classes = ds_emails['spam']
         
-        return train_test_split(texts, classes, test_size=0.25)
+        return texts, classes
 
     @staticmethod
     def __clean_text(text):
