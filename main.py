@@ -42,16 +42,14 @@ def main():
     transformer_layer = TransformerBlock(embed_dim, num_heads, 50)
     embedding_layer = TokenAndPositionEmbedding(max_len, n_words, embed_dim)
 
-    inputs = layers.Input(shape=(max_len,))
-    x = embedding_layer(inputs)
-    x = transformer_layer(x)
-    x = layers.GlobalAveragePooling1D()(x)
-    x = layers.Dropout(0.1)(x)
-    x = layers.Dense(20, activation="relu")(x)
-    x = layers.Dropout(0.1)(x)
-    outputs = layers.Dense(2, activation="softmax")(x)
+    input_layer = layers.Input(shape=(max_len,))
+    layer_embed = embedding_layer(input_layer)
+    layer_trans = transformer_layer(layer_embed)
+    layer_gap = layers.GlobalAveragePooling1D()(layer_trans)
+    layer_den = layers.Dense(20, activation="relu")(layer_gap)
+    output_layer = layers.Dense(2, activation="softmax")(layer_den)
 
-    model = keras.Model(inputs=inputs, outputs=outputs)
+    model = keras.Model(inputs=input_layer, outputs=output_layer)
 
     model.compile("adam", "sparse_categorical_crossentropy", metrics=["accuracy"])
 
@@ -60,6 +58,8 @@ def main():
     model.fit(X_train, y_train, epochs=4)
 
     model.evaluate(X_test, y_test)
+
+    print()
 
 if __name__ == "__main__":
     main()
