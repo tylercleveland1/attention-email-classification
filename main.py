@@ -17,9 +17,10 @@ from layers import *
 
 def main():
     n_words = 10000
-    embedding_dim = 50
     max_len = 50 #only take top 50 words
 
+    embed_dim = 32
+    num_heads = 1
 
     X, y = SpamDataset.get_data()
 
@@ -36,30 +37,20 @@ def main():
 
     X_train, X_test, y_train, y_test = train_test_split(X, y)
 
-    embed_dim = 32
-    num_heads = 1
+    l_input = layers.Input(shape=(max_len,))
+    l_embedding = TokenAndPositionEmbedding(max_len, n_words, embed_dim)(l_input)
 
-    transformer_layer = TransformerBlock(embed_dim, num_heads, 50)
-    embedding_layer = TokenAndPositionEmbedding(max_len, n_words, embed_dim)
-
-    input_layer = layers.Input(shape=(max_len,))
-    layer_embed = embedding_layer(input_layer)
-    layer_trans = transformer_layer(layer_embed)
-    layer_gap = layers.GlobalAveragePooling1D()(layer_trans)
-    layer_den = layers.Dense(20, activation="relu")(layer_gap)
-    output_layer = layers.Dense(2, activation="softmax")(layer_den)
-
-    model = keras.Model(inputs=input_layer, outputs=output_layer)
-
+    l_mha = MultiHeadSelfAttention(embed_dim, num_heads=1)(l_embedding)
+    l_pool = layers.GlobalAveragePooling1D()(l_mha)
+    l_output = layers.Dense(2, activation="softmax")(l_pool)
+    
+    model = keras.Model(inputs=l_input, outputs=l_output)
     model.compile("adam", "sparse_categorical_crossentropy", metrics=["accuracy"])
-
     model.summary()
     
     model.fit(X_train, y_train, epochs=4)
 
     model.evaluate(X_test, y_test)
-
-    print()
 
 if __name__ == "__main__":
     main()
