@@ -6,6 +6,8 @@
 #https://androidkt.com/text-classification-using-attention-mechanism-in-keras/
 #https://www.tensorflow.org/api_docs/python/tf/keras/layers/Attention
 
+#https://stackoverflow.com/questions/51235118/how-to-get-word-vectors-from-keras-embedding-layer
+
 import tensorflow as tf
 import keras
 from keras_preprocessing import sequence
