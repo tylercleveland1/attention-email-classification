@@ -40,7 +40,7 @@ def main():
     l_input = layers.Input(shape=(max_len,))
     l_embedding = TokenAndPositionEmbedding(max_len, n_words, embed_dim)(l_input)
 
-    l_mha = MultiHeadSelfAttention(embed_dim, num_heads=1)(l_embedding)
+    l_mha = SelfAttention(embed_dim)(l_embedding)
     l_pool = layers.GlobalAveragePooling1D()(l_mha)
     l_output = layers.Dense(2, activation="softmax")(l_pool)
     
