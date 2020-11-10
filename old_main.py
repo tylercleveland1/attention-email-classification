@@ -54,5 +54,15 @@ def main():
 
     model.evaluate(X_test, y_test)
 
+
+    #get intermediate layer
+    model_emb = keras.Model(input=l_input, output=l_embedding)
+    #test inputs
+    x_pred = tokenizer.texts_to_sequences(["this is a test of the email classification system"]);
+    x_pred = sequence.pad_sequences(x_pred, maxlen=max_len, truncating='post', padding='post', value=0)
+    print(
+        model_emb.predict(x_pred)
+    )
+
 if __name__ == "__main__":
     main()
