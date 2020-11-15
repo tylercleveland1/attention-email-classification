@@ -1,0 +1,66 @@
+
+
+<!doctype html>
+
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Attention Email Classification</title>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+        <script src="MLScript.js"></script>
+        <script src="https://kit.fontawesome.com/5edcca6b9d.js" crossorigin="anonymous"></script>
+    </head>
+
+    <body>
+        <div class="container">
+
+            <nav class="navbar navbar-expand-xl navbar-dark bg-primary mb-2 rounded">
+                <i class="fas fa-envelope-square fa-3x mr-3" style="color: white"></i>
+                <a class="navbar-brand mr-auto" href="#">Attention Email Classification</a>
+                <i class="fas fa-circle-notch fa-spin fa-3x ml-auto d-none" id="loading" style="color: white"></i>
+            </nav>
+
+            <div class="container">
+                <div class="row bg-light p-3 rounded">
+                    <div class="col">
+                        <div class="row">
+                            <h3>Input Email</h3>
+                        </div>
+
+                        <div class="row">
+                            <p>Copy and paste your email text here</p>
+                        </div>
+
+                        <div class="row mb-2">
+                            <div class="input-group">
+                                <textarea class="form-control" aria-label="With textarea" rows="8" id="input"></textarea>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <button type="button" class="btn btn-primary ml-auto" onclick="classifier();">Submit</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row d-none" id="output_row">
+                    <div class="col">
+                        <div class="row">
+                            <h3>Spam or Ham?</h3>
+                        </div>
+
+                        <div class="row">
+                            <p class="text-danger" id="spamOrHam">Spam</p>
+                        </div>
+
+                        <div class="row">
+                            <div id="output">
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+          </div>
+    </body>
+</html>
