@@ -13,11 +13,11 @@ def index(request):
 
 class SpamTest(APIView):
 	def post(self, request, format=None):
-		model_name = request.data.get('email_text', None)
+		email_text = request.data.get('email_text', None)
 
 		email_classifier = EmailClassifier()
 		
-		return get_success_200_reponse("test")
+		return get_success_200_reponse(email_text)
 
 def get_success_200_reponse(data):
 	return Response(data, status=httpstatus.HTTP_200_OK)

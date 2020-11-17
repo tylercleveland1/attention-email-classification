@@ -28,7 +28,6 @@ class EmailClassifier:
 
         self.load_model()
 
-    
     def load_model(self):
         l_input = keras.layers.Input(shape=(self.max_len,))
         embedding_layer = keras.layers.Embedding(input_dim=self.n_words, output_dim=self.embed_dim)
