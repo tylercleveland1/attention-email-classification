@@ -1,0 +1,3 @@
+var ClassificationApi = (function () {
+    return {};
+})();
