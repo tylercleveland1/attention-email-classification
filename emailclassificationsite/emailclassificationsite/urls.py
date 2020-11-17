@@ -20,4 +20,7 @@ from emailclassificationapp import views
 
 urlpatterns = [
     path('', views.index, name='index'),
+
+    ##########  API ###########
+    path('api/spamtest', views.SpamTest.as_view(), name='spamtest'),
 ]
