@@ -23,4 +23,5 @@ urlpatterns = [
 
     ##########  API ###########
     path('api/spamtest', views.SpamTest.as_view(), name='spamtest'),
+    path('api/spamorham', views.SpamOrHam.as_view(), name='spamorham'),
 ]
