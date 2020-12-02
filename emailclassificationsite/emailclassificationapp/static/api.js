@@ -1,3 +1,5 @@
+//export {ClassificationApi, APISettings};
+
 var APISettings = (function () {
     function parseCSRFToken() {
         return $('#csrftoken > input').val();
