@@ -8,11 +8,10 @@ class SelfAttention(layers.Layer):
     def __init__(self, embed_dim):
         super(SelfAttention, self).__init__()
         self.embed_dim = embed_dim
-        self.projection_dim = embed_dim # // num_heads
+        self.projection_dim = embed_dim
         self.query_dense = layers.Dense(embed_dim)
         self.key_dense = layers.Dense(embed_dim)
         self.value_dense = layers.Dense(embed_dim)
-        self.combine_heads = layers.Dense(embed_dim)
 
     def attention(self, query, key, value):
         score = tf.matmul(query, key, transpose_b=True)
