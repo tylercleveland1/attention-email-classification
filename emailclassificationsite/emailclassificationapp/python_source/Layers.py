@@ -8,7 +8,6 @@ class SelfAttention(layers.Layer):
     def __init__(self, embed_dim):
         super(SelfAttention, self).__init__()
         self.embed_dim = embed_dim
-        self.projection_dim = embed_dim
         self.query_dense = layers.Dense(embed_dim)
         self.key_dense = layers.Dense(embed_dim)
         self.value_dense = layers.Dense(embed_dim)
