@@ -1,0 +1,112 @@
+{% extends 'base.html' %}
+
+{% block body %}
+<div class="container">
+
+    <nav class="navbar navbar-expand-xl navbar-dark bg-primary mb-2 rounded">
+        <i class="fas fa-envelope-square fa-3x mr-3" style="color: white"></i>
+        <a class="navbar-brand mr-auto" href="#">Attention Email Classification</a>
+        <i class="fas fa-circle-notch fa-spin fa-3x ml-auto d-none" id="loading" style="color: white"></i>
+    </nav>
+
+    <div class="container">
+        <div class="row bg-light p-3 rounded">
+            <div class="col">
+                <div class="row">
+                    <h3>Input Email</h3>
+                </div>
+
+                <div class="row">
+                    <p>Copy and paste your email text here</p>
+                </div>
+
+                <div class="row mb-2">
+                    <div class="input-group">
+                        <textarea class="form-control" aria-label="With textarea" rows="8" id="input"></textarea>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <button type="button" class="btn btn-primary ml-auto" onclick="classifier();">Submit</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="row d-none" id="output_row">
+            <div class="col">
+                <div class="row">
+                    <h3>Spam or Ham?</h3>
+                </div>
+
+                <div class="row">
+                    <p id="spamOrHam"></p>
+                </div>
+
+                <div class="row">
+                    <div id="output">
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<style>
+    .highlight-green-1 {
+        background-color: rgb(215, 255, 215);
+    }
+    .highlight-green-2 {
+        background-color: rgb(175, 255, 175);
+    }
+    .highlight-green-3 {
+        background-color: rgb(135, 255, 135);
+    }
+    .highlight-green-4 {
+        background-color: rgb(95, 255, 95);
+    }
+    .highlight-green-5 {
+        background-color: rgb(55, 255, 55);
+    }
+    /* .highlight-green-6 {
+        background-color: rgb(64, 255, 64);
+    }
+    .highlight-green-7 {
+        background-color: rgb(49, 255, 49);
+    }
+    .highlight-green-8 {
+        background-color: rgb(34, 255, 34);
+    }
+    .highlight-green-9 {
+        background-color: rgb(19, 255, 19);
+    } */
+
+    .highlight-red-1 {
+        background-color: rgb(255, 215, 215);
+    }
+    .highlight-red-2 {
+        background-color: rgb(255, 175, 175);
+    }
+    .highlight-red-3 {
+        background-color: rgb(255, 135, 135);
+    }
+    .highlight-red-4 {
+        background-color: rgb(255, 95, 95);
+    }
+    .highlight-red-5 {
+        background-color: rgb(255, 55, 55);
+    }
+    /* }
+    .highlight-red-6 {
+        background-color: rgb(255, 64, 64);
+    }
+    .highlight-red-7 {
+        background-color: rgb(255, 49, 49);
+    }
+    .highlight-red-8 {
+        background-color: rgb(255, 34, 34);
+    }
+    .highlight-red-9 {
+        background-color: rgb(255, 19, 19);
+    } */
+</style>
+{% endblock body %}
