@@ -21,10 +21,8 @@ class SelfAttention(layers.Layer):
         return output, weights
 
     def call(self, inputs):
-        # x.shape = [batch_size, seq_len, embedding_dim]
-        batch_size = tf.shape(inputs)[0]
-        query = self.query_dense(inputs)  # (batch_size, seq_len, embed_dim)
-        key = self.key_dense(inputs)  # (batch_size, seq_len, embed_dim)
-        value = self.value_dense(inputs)  # (batch_size, seq_len, embed_dim)
+        query = self.query_dense(inputs)  # (seq_len, embed_dim)
+        key = self.key_dense(inputs)  # (seq_len, embed_dim)
+        value = self.value_dense(inputs)  # (seq_len, embed_dim)
         attention, weights = self.attention(query, key, value)
         return attention
