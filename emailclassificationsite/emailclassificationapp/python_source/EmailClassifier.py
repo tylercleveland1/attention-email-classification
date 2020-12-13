@@ -1,7 +1,7 @@
 #https://stackoverflow.com/questions/51235118/how-to-get-word-vectors-from-keras-embedding-layer
 
 import tensorflow as tf
-import keras
+from tensorflow import keras
 from keras_preprocessing import sequence
 import numpy as np
 from sklearn.preprocessing import normalize
@@ -85,7 +85,6 @@ class EmailClassifier:
 
         token_att_scores = np.array(token_att_scores)
 
-        print(token_att_scores.shape)
         word_list = []
         for item in token_att_scores:
             for pair in item:
